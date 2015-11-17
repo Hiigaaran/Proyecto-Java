@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2015 a las 21:37:16
+-- Tiempo de generación: 17-11-2015 a las 21:51:35
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -36,6 +36,10 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `correo` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- RELACIONES PARA LA TABLA `cliente`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +53,18 @@ CREATE TABLE IF NOT EXISTS `detalle_venta` (
   `cantidad` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- RELACIONES PARA LA TABLA `detalle_venta`:
+--   `cod_producto`
+--       `producto` -> `cod_producto`
+--   `cod_venta`
+--       `venta` -> `cod_venta`
+--   `cod_venta`
+--       `venta` -> `cod_venta`
+--   `cod_producto`
+--       `producto` -> `cod_producto`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -60,8 +76,13 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `nombre` varchar(15) NOT NULL,
   `clase` varchar(15) NOT NULL,
   `descripcion` varchar(30) NOT NULL,
+  `stock` int(10) NOT NULL,
   `valor_neto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELACIONES PARA LA TABLA `producto`:
+--
 
 -- --------------------------------------------------------
 
@@ -74,6 +95,10 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `nombre` varchar(15) NOT NULL,
   `apellido` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELACIONES PARA LA TABLA `vendedor`:
+--
 
 -- --------------------------------------------------------
 
@@ -89,6 +114,18 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `cant_prod` int(11) NOT NULL,
   `valor_neto_total` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELACIONES PARA LA TABLA `venta`:
+--   `rut_cliente`
+--       `cliente` -> `rut_cliente`
+--   `rut_vendedor`
+--       `vendedor` -> `rut_vendedor`
+--   `rut_cliente`
+--       `cliente` -> `rut_cliente`
+--   `rut_vendedor`
+--       `vendedor` -> `rut_vendedor`
+--
 
 --
 -- Índices para tablas volcadas
