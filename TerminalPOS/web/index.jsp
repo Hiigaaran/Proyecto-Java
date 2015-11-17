@@ -12,6 +12,11 @@
         <title>Prueba Aqui estuvo Simon</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h3> Sistema Punto de Ventas</h3>
+        <%@include file="opciones.jsp" %>
+        _______________________________________________________________
+        
+        
+        
     </body>
 </html>
