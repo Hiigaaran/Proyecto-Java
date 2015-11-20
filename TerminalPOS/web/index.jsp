@@ -9,14 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Prueba Aqui estuvo Simon</title>
+        <title>Terminal Punto de Ventas</title>
     </head>
     <body>
-        <h3> Sistema Punto de Ventas</h3>
+        
         <%@include file="opciones.jsp" %>
-        _______________________________________________________________
-        
-        
-        
+           
     </body>
 </html>

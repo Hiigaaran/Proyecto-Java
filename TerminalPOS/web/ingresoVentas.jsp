@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Venta</title>
     </head>
     <body>
     <center> 
-         <h3> Sistema Punto de Ventas</h3>
+         
         <%@include file="opciones.jsp" %>
-        _______________________________________________________________
+       <br/>
     </center>   
         <table border="0">           
             <tbody>
@@ -34,31 +34,38 @@
                     <td>Correo:</td>
                     <td><input type="text" name="correo_cli"/></td>
                     <td>      </td>
-                    <td><input type="submit" alt="Ingresar Cliente"</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="submit" alt="Ingresar Cliente" </td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
-
-        
-        
+______________________________________________________________________________________________________
+       <br/>
+       <br/>
+       <table border="0">
+           <tbody>
+               <tr>Ingrese Datos de la Venta</tr>
+               <tr>
+                    <td>Producto:</td>
+                    <td><input type="text" name="nom_prod"/></td>
+                    <td>Codigo Producto:</td>
+                    <td><input type="text" name="cod_prod"/></td>
+                    <td>Cantidad:</td>
+                    <td><input type="text" name="cant_prod"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Codigo Venta:</td>
+                    <td><input type="text" name="cod_ven"/></td>
+                    <td>Valor:</td>
+                    <td><input type="text" name="val_neto"></td>
+                    <td>Valor Total:</td>
+                    <td><input type="text" name="val_total" /></td>  
+                </tr>  
+                <tr>
+                    <td><input type="submit" alt="Ingresar Venta"/></td>
+                </tr>
+           </tbody>
+       </table> 
     </body>
 </html>
