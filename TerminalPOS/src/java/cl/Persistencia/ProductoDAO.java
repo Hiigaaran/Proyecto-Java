@@ -48,7 +48,7 @@ public class ProductoDAO {
     
     
     
-    public void actualizar()
+    public void buscarProductoId(int id)
     {
         
     }
