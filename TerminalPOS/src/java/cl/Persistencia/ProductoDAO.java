@@ -5,9 +5,11 @@
  */
 package cl.Persistencia;
 
+import cl.dominio.Cliente;
 import cl.dominio.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -47,11 +49,34 @@ public class ProductoDAO {
     }
     
     
+  public boolean verificarCodproducto  (int cod_pro)
+  {
+      String sql = "select * from Producto where cod_producto = ?";
+        Producto p=null;
+
+        try (PreparedStatement stmt = cnx.prepareStatement(sql))
+        {
+            stmt.setInt(1, cod_pro);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                 
+                   p.setCodProducto(rs.getInt("cod_producto"));
+                }
+               
+ 
+                if (p.getCodProducto()!=null) {
+                    return true;
+                }else
+                {
+                    return false;
+                }
+
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al Buscar Peticion");
+        }
+  }
     
-    public void buscarProductoId(int id)
-    {
-        
-    }
     
     
     
