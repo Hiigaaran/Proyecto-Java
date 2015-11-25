@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2015 a las 17:39:46
+-- Tiempo de generación: 25-11-2015 a las 18:27:17
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `puntoventa`
 --
-CREATE DATABASE IF NOT EXISTS `puntoventa` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `puntoventa`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,7 @@ USE `puntoventa`;
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
-  `rut_cliente` varchar(10) NOT NULL,
+  `rut_cliente` int(10) NOT NULL,
   `nombre` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -57,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
 CREATE TABLE IF NOT EXISTS `venta` (
   `cod_venta` int(10) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `rut_cliente` varchar(10) NOT NULL,
+  `rut_cliente` int(10) NOT NULL,
   `cant_prod` int(11) NOT NULL,
   `valor_neto_total` int(10) NOT NULL,
   `cod_producto` int(10) NOT NULL
@@ -109,8 +107,8 @@ ALTER TABLE `venta`
 -- Filtros para la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`rut_cliente`) REFERENCES `cliente` (`rut_cliente`),
-  ADD CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`cod_producto`) REFERENCES `producto` (`cod_producto`);
+  ADD CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`cod_producto`) REFERENCES `producto` (`cod_producto`),
+  ADD CONSTRAINT `venta_ibfk_4` FOREIGN KEY (`rut_cliente`) REFERENCES `cliente` (`rut_cliente`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

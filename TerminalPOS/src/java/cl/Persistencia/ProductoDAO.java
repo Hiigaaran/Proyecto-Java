@@ -76,7 +76,7 @@ public class ProductoDAO {
                 }
             }
         } catch (SQLException ex) {
-            throw new RuntimeException("Error al Buscar la Raza", ex);
+            throw new RuntimeException("Error al Buscar el Producto", ex);
         }
         return prod;
         
