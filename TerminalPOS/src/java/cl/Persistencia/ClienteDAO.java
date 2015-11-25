@@ -15,7 +15,10 @@ public class ClienteDAO {
         this.cnx = cnx;
 
     }
-    
+     public void agregar()
+     {
+         
+     }
     
     
 }
