@@ -16,12 +16,13 @@ public class Venta implements Serializable{
     public int codVenta;
     public Timestamp fecha;
     public int rutCliente;
+    public int codProducto;
     public int cantProducto;
     public int valorNetoTotal;
 
     public Venta() {
     }
-
+    
     public int getCodVenta() {
         return codVenta;
     }
@@ -62,16 +63,25 @@ public class Venta implements Serializable{
         this.valorNetoTotal = valorNetoTotal;
     }
 
+    public int getCodProducto() {
+        return codProducto;
+    }
+
+    public void setCodProducto(int codProducto) {
+        this.codProducto = codProducto;
+    }
+
     @Override
     public String toString() {
-        return "Venta{" + "codVenta=" + codVenta + ", fecha=" + fecha + ", rutCliente=" + rutCliente + ", cantProducto=" + cantProducto + ", valorNetoTotal=" + valorNetoTotal + '}';
+        return "Venta{" + "codVenta=" + codVenta + ", fecha=" + fecha + ", rutCliente=" + rutCliente + ", codProducto=" + codProducto + ", cantProducto=" + cantProducto + ", valorNetoTotal=" + valorNetoTotal + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + this.codVenta;
-        hash = 71 * hash + this.rutCliente;
+        hash = 23 * hash + this.codVenta;
+        hash = 23 * hash + this.rutCliente;
+        hash = 23 * hash + this.codProducto;
         return hash;
     }
 
@@ -87,11 +97,13 @@ public class Venta implements Serializable{
         if (this.codVenta != other.codVenta) {
             return false;
         }
-        if (this.rutCliente != other.rutCliente) {
+        if (this.codProducto != other.codProducto) {
             return false;
         }
         return true;
     }
+    
+    
     
     
 }
