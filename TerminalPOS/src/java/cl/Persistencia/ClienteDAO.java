@@ -17,6 +17,10 @@ public class ClienteDAO {
         this.cnx = cnx;
 
     }
+    
+    
+    
+    
      public void agregar(Cliente cli)
      {
          String sql = "insert into cliente (rut_cliente,nombre)values(?,?)";

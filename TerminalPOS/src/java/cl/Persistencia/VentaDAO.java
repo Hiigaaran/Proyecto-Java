@@ -31,16 +31,20 @@ public class VentaDAO {
         String sql = "update producto set stock=? where cod_producto= ?";
         
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
-            stmt.setInt(1, p.getStock() - v.getCantProducto());
+            
+            if (p.getStock()>v.getCantProducto()) {
+               stmt.setInt(1, p.getStock() - v.getCantProducto());
             stmt.setInt(2, v.getCodProducto());
             
-            stmt.executeUpdate();
+            stmt.executeUpdate(); 
+            }
+            
         } catch (SQLException e) {
             throw new RuntimeException("Error al ingresar la venta, stock insuficiente!!");
         }
         
         //Si pasa la validacion se continua con la venta del producto.
-        sql = "insert into venta (fecha, rut_cliente, cant_prod, valor_neto_total)";
+        sql = "insert into venta (fecha, rut_cliente, cant_prod, valor_neto_total) values (?,?,?,?)";
         
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
             stmt.setTimestamp(1, v.getFecha());

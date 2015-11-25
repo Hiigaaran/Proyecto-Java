@@ -5,16 +5,14 @@
  */
 package cl.servicio;
 
-import cl.Persistencia.ClienteDAO;
-import cl.Persistencia.ProductoDAO;
-import cl.Persistencia.VendedorDAO;
-import cl.Persistencia.VentaDAO;
-import cl.dominio.Cliente;
-import cl.dominio.Producto;
+
 
 import java.sql.Connection;
 import java.util.List;
 import cl.Persistencia.*;
+import cl.dominio.Cliente;
+import cl.dominio.Producto;
+import cl.dominio.Venta;
 
 /**
  *
@@ -22,4 +20,39 @@ import cl.Persistencia.*;
  */
 public class TerminalPosService {
     
+    private ClienteDAO clienteDAO;
+    private ProductoDAO productoDAO;
+    private VentaDAO ventaDAO;
+    private ConsultaDAO consultaDAO;
+
+    public TerminalPosService(Connection cnx) {
+        clienteDAO =new ClienteDAO(cnx);
+        productoDAO=new ProductoDAO(cnx);
+        ventaDAO= new VentaDAO(cnx);
+        consultaDAO = new ConsultaDAO(cnx);
+    }
+
+    public void agregarCliente(Cliente cli)throws ServicioException
+    {
+        Cliente bd = clienteDAO.buscar(cli.getRutCliente());
+        if (bd!=null) {
+            throw new ServicioException("Ya existe Cliente  con el Rut indicado: " + cli.getRutCliente());
+        }
+        clienteDAO.agregar(cli);
+    }
+    
+    public void agregarProducto(Producto prod)throws ServicioException
+    {
+        productoDAO.agregar(prod);
+    }
+   
+    public void agregarVenta(Venta v,Producto p)
+    {
+            ventaDAO.ingresarVenta(v, p);
+    }
+    
+    public List<Producto> buscarTodosLosProductos()
+    {
+        return productoDAO.buscarTodos();
+    }
 }
