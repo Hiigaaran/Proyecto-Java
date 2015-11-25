@@ -58,4 +58,38 @@ public class ClienteDAO {
         return c;
     }
 
+    
+    
+    
+    public boolean VerificarRutCliente(String rutCliente) {
+
+        String sql = "select * from Cliente where rut_cliente = ?";
+        Cliente c = null;
+
+        try (PreparedStatement stmt = cnx.prepareStatement(sql))
+        {
+            stmt.setString(1, rutCliente);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    c.setRutCliente(rs.getString("rut_cliente"));
+                   
+                }
+                
+                if (c.getRutCliente().isEmpty()) {
+                    return true;
+                }else
+                {
+                    return false;
+                }
+
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al Buscar Peticion");
+        }
+        
+    }
+    
+    
+    
+    
 }

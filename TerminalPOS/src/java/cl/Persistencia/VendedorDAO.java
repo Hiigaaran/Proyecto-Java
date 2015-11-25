@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package cl.Persistencia;
 
 import cl.dominio.Vendedor;
@@ -47,3 +48,21 @@ public class VendedorDAO {
         return v;
     }
 }
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cl.Persistencia;
+
+/**
+ *
+ * @author Sergio
+ */
+public class VendedorDAO {
+    
+    
+   
+}
+>>>>>>> e86a8e7f5a8c94d69487bcfb41a03a25079c1666
