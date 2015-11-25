@@ -13,6 +13,8 @@ import cl.Persistencia.*;
 import cl.dominio.Cliente;
 import cl.dominio.Producto;
 import cl.dominio.Venta;
+import cl.dto.ClienteProductoVentaDTO;
+import cl.dto.ProductoVentaDTO;
 
 /**
  *
@@ -54,5 +56,16 @@ public class TerminalPosService {
     public List<Producto> buscarTodosLosProductos()
     {
         return productoDAO.buscarTodos();
+    }
+    
+    public List<ClienteProductoVentaDTO> buscarTodoClienteProductoVenta()
+    {
+        return consultaDAO.buscarAllClienteProductoVenta();
+    }
+    
+    
+    public List<ProductoVentaDTO> buscarTodoProductoVenta()
+    {
+        return consultaDAO.buscarAllProductoVenta();
     }
 }

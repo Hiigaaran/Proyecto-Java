@@ -34,7 +34,7 @@ public class VentaDAO {
             
             if (p.getStock()>v.getCantProducto()) {
                stmt.setInt(1, p.getStock() - v.getCantProducto());
-            stmt.setInt(2, v.getCodProducto());
+            stmt.setInt(2, v.getCodProducto()); 
             
             stmt.executeUpdate(); 
             }
