@@ -13,6 +13,8 @@ import cl.dominio.Cliente;
 import cl.dominio.Producto;
 import cl.dominio.Vendedor;
 import java.sql.Connection;
+import java.util.List;
+import cl.Persistencia.*;
 
 /**
  *
@@ -56,5 +58,11 @@ public class TerminalPosService {
             throw new ServicioException("Ya hay un vendedor registrado con el siguiente RUT: "+v.getRutVendedor());
         }
         vendedorDAO.agregar(v);
+    }
+    
+    public List<Producto> listarProductos()
+    {
+       return productoDAO.buscarTodos();
+       
     }
 }

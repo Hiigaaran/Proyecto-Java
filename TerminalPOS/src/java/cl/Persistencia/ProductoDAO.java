@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -77,7 +79,31 @@ public class ProductoDAO {
         }
   }
     
-    
+    public List<Producto> buscarTodos()
+    {
+       List<Producto> lista = new ArrayList();
+       String sql="select * from producto order by cod_producto";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();) {
+            while(rs.next()){
+                Producto producto= new Producto();
+                producto.setCodProducto(rs.getInt("cod_producto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setClase(rs.getString("clase"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setValorNeto(rs.getInt("valor_neto"));
+                
+                lista.add(producto);
+            }
+                
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al Buscar Todos la Raza", ex);
+        }
+        return lista;
+        
+        
+    }
     
     
 }
