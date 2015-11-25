@@ -12,7 +12,5 @@ package cl.Persistencia;
 public class VendedorDAO {
     
     
-    
-    
-    
+   
 }
