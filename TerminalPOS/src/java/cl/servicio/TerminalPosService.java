@@ -11,7 +11,7 @@ import cl.Persistencia.VendedorDAO;
 import cl.Persistencia.VentaDAO;
 import cl.dominio.Cliente;
 import cl.dominio.Producto;
-import cl.dominio.Vendedor;
+
 import java.sql.Connection;
 import java.util.List;
 import cl.Persistencia.*;
