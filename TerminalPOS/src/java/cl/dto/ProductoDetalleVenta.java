@@ -14,33 +14,4 @@ import cl.dominio.Producto;
  */
 public class ProductoDetalleVenta {
     
-    private Producto producto;
-    private DetalleVenta detalleVenta;
-
-    public ProductoDetalleVenta() {
-    }
-
-    public ProductoDetalleVenta(Producto producto, DetalleVenta detalleVenta) {
-        this.producto = producto;
-        this.detalleVenta = detalleVenta;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public DetalleVenta getDetalleVenta() {
-        return detalleVenta;
-    }
-
-    public void setDetalleVenta(DetalleVenta detalleVenta) {
-        this.detalleVenta = detalleVenta;
-    }
-    
-    
-    
 }

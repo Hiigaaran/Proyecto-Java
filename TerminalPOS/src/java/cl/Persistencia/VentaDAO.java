@@ -5,6 +5,12 @@
  */
 package cl.Persistencia;
 
+import cl.dominio.Venta;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
 /**
  *
  * @author Sergio
