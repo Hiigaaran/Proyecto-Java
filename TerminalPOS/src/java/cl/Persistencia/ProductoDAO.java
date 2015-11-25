@@ -5,7 +5,7 @@
  */
 package cl.Persistencia;
 
-import cl.dominio.Cliente;
+
 import cl.dominio.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
