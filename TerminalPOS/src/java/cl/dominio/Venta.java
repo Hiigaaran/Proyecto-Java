@@ -5,13 +5,14 @@
  */
 package cl.dominio;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author Simon
  */
-public class Venta {
+public class Venta implements Serializable{
     public int codVenta;
     public Timestamp fecha;
     public int rutCliente;

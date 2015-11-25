@@ -5,11 +5,13 @@
  */
 package cl.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Simon
  */
-public class Cliente {
+public class Cliente implements Serializable{
     public int rutCliente;
     public String nombre;
 

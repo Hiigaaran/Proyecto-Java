@@ -5,11 +5,13 @@
  */
 package cl.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Simon
  */
-public class Producto {
+public class Producto implements Serializable{
     public int codProducto;
     public String nombre;
     public String clase;
