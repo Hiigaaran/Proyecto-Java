@@ -9,7 +9,7 @@
 <h1> Terminal Punto de Ventas </h1>
 <p>
     Opciones: 
-    <a href="<c:url value="/ingresoVentas" />">Agregar Nueva Venta</a>
+    <a href="<c:url value="/ControllerIngresoVenta" />">Agregar Nueva Venta</a>
     |
     <a href="<c:url value="/estadisticasventas" />">Registro de Ventas</a>
     |

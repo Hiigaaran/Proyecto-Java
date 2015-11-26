@@ -96,7 +96,7 @@ public class ProductoDAO {
                 prod.setCodProducto(rs.getInt("cod_producto"));
                 prod.setNombre(rs.getString("nombre"));
                 prod.setClase(rs.getString("clase"));
-                prod.setDescripcion(rs.getString("descrpcion"));
+                prod.setDescripcion(rs.getString("descripcion"));
                 prod.setStock(rs.getInt("stock"));
                 prod.setValorNeto(rs.getInt("valor_neto"));
                 
