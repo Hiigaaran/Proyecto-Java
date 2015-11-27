@@ -10,9 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <title>Venta</title>
     </head>
-    <body>
+    <body class="teal">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
     <center> 
          
         <%@include file="opciones.jsp" %>
@@ -30,7 +36,7 @@
                 </tr>
             </tbody>
         </table>
-______________________________________________________________________________________________________
+<center>______________________________________________________________________________________________________________________________________________</center>
        <br/>
        <br/>
        <table border="0">
@@ -38,7 +44,7 @@ ________________________________________________________________________________
                <tr>Ingrese Datos de la Venta</tr>
                <tr>
                     <td>Producto:</td>
-                            <td><select name="lsProducto" >
+                    <td><select class="dropdown-button btn" name="lsProducto" >
                                     <option value="">(Seleccione)</option>
                                     <c:forEach var="p" items="${lsProducto}">
                                         <option value="${p.codProducto}" ${p.codProducto == venta.codProducto ? 'Selected' : ''}>
@@ -57,7 +63,7 @@ ________________________________________________________________________________
                     <td><input type="text" name="val_total" value="<c:out value="${venta.valorNetoTotal}"/>"/></td>  
                 </tr>  
                 <tr>
-                    <td><input type="submit" alt="Ingresar Venta"/></td>
+                    <td><center><input class="waves-effect waves-light btn" type="submit" alt="Ingresar Venta"/></center></td>
                 </tr>
            </tbody>
        </table> 
