@@ -8,6 +8,7 @@ package cl.controller;
 import cl.dominio.Cliente;
 import cl.dominio.Producto;
 import cl.dominio.Venta;
+import cl.servicio.ServicioException;
 import cl.servicio.TerminalPosService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -100,10 +101,10 @@ public class ControllerIngresoVenta extends HttpServlet {
                     venta.setCantProducto(cantidad);
                 }
             
-            
+           
             // Si no encuentra errores registrados trae al producto seleccionado y recoge todos los valores
              // para enviarlos para ingreso a 
-            if (mapMensajes.isEmpty()) {                
+          if (mapMensajes.isEmpty()) {                
                 try {   
                     
                     producto = service.buscarProducto(Integer.parseInt(strCodProducto));  
@@ -122,23 +123,22 @@ public class ControllerIngresoVenta extends HttpServlet {
                    venta.setFecha(ts_now);
                    
                   
-                    service.agregarCliente(cliente);
+                    //service.agregarCliente(cliente);
                     service.agregarVenta(venta, producto);
                     
                    
                    
-                   request.setAttribute("neto", producto.getValorNeto());
-                   request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
-                   
-                } catch (Exception e) {                      
-                }                  
+                }  catch (ServicioException ex) {
+                    mensaje = ex.getMessage();
+                }              
             }         
             
             
             
+            request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
             
-            
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

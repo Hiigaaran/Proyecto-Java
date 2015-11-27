@@ -67,7 +67,7 @@ public class ProductoDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     prod= new Producto();
-                    prod.setCodProducto(rs.getInt("cod_prodducto"));
+                    prod.setCodProducto(rs.getInt("cod_producto"));
                     prod.setNombre(rs.getString("nombre"));
                     prod.setClase(rs.getString("clase"));
                     prod.setDescripcion(rs.getString("descripcion"));
