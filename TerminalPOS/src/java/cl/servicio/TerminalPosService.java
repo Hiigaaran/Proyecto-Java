@@ -68,4 +68,11 @@ public class TerminalPosService {
     {
         return consultaDAO.buscarAllProductoVenta();
     }
+    
+    
+    public Producto buscarProducto(int cod_producto)
+    {
+       return  productoDAO.buscar(cod_producto);
+        
+    }
 }

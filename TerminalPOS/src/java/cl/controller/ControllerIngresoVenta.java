@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
@@ -62,12 +63,12 @@ public class ControllerIngresoVenta extends HttpServlet {
             TerminalPosService service = new TerminalPosService(cnx);
             Cliente cliente = new Cliente();
             Venta venta = new Venta();
-            Producto producto = new Producto();
-            
+            Producto producto = null;
+            int rut=0;
             Map<String,String> mapMensajes = new HashMap<>();
             String mensaje;
             try {
-                int rut = Integer.parseInt(request.getParameter("rut_cli"));
+                rut = Integer.parseInt(request.getParameter("rut_cli"));
                 //Supongo que aqui podriamos colocar un metodo para validar Ruts.
                 if (rut <= 0) {
                     mapMensajes.put("rut_cli", "Tiene que ingresar un Rut Válido");
@@ -98,6 +99,42 @@ public class ControllerIngresoVenta extends HttpServlet {
                 }else{
                     venta.setCantProducto(cantidad);
                 }
+            
+            
+            // Si no encuentra errores registrados trae al producto seleccionado y recoge todos los valores
+             // para enviarlos para ingreso a 
+            if (mapMensajes.isEmpty()) {                
+                try {   
+                    
+                    producto = service.buscarProducto(Integer.parseInt(strCodProducto));  
+                    
+                    
+                    cliente.setNombre(nombreCli);
+                    cliente.setRutCliente(rut);
+                    service.agregarCliente(cliente);
+                    venta.setRutCliente(cliente.getRutCliente());
+                    venta.setCodProducto(producto.getCodProducto());
+                    venta.setCantProducto(cantidad);
+                    venta.setValorNetoTotal(cantidad*producto.getValorNeto()); 
+                    
+                    java.util.Date date= new java.util.Date();
+                    Timestamp ts_now = new Timestamp(date.getTime());
+                   venta.setFecha(ts_now);
+                   
+                  
+                    service.agregarCliente(cliente);
+                    service.agregarVenta(venta, producto);
+                    
+                   
+                   
+                   request.setAttribute("neto", producto.getValorNeto());
+                   request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
+                   
+                } catch (Exception e) {                      
+                }                  
+            }         
+            
+            
             
             
             
