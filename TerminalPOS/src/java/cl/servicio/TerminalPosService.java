@@ -75,4 +75,14 @@ public class TerminalPosService {
        return  productoDAO.buscar(cod_producto);
         
     }
+    
+    public List<Cliente> buscarTodosCliente()
+    {               
+        return clienteDAO.buscarTodos();
+    }
+    
+    public List<Venta> buscarTodasVentas()
+    {
+        return ventaDAO.buscarVentas();
+    }
 }

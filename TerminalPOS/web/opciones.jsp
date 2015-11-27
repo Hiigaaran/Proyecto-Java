@@ -11,7 +11,7 @@
     Opciones: 
     <a href="<c:url value="/ControllerIngresoVenta" />">Agregar Nueva Venta</a>
     |
-    <a href="<c:url value="/estadisticasventas" />">Registro de Ventas</a>
+    <a href="<c:url value="/ControllerEstadisticasVentas" />">Registro de Ventas</a>
     |
     
 

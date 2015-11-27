@@ -4,42 +4,76 @@
     Author     : kades
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <title>Estadisticas POS</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 5px;
+            }
+        </style>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body class="teal">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <form action="<c:url value="/ControllerEstadisticasVentas" />" method="GET">
+            <center><h1>Sitio de Estadisticas de POS</h1></center>
+            <%@include file="opciones.jsp" %>
         
-     <table>
+    <center><h3>Lista de Cliente Registrados</h3></center>
+    <center>
+        <table>
             <tr>
-                <th>Nombre</th>
-                <th>Raza</th>
-                <th>ID Reg.</th>
-                <th>Fecha Registro</th>
-                <th>Acción</th>
+                <th>Rut Cliente</th>
+                <th>Nombre Cliente</th>
             </tr>
-            <c:forEach var="p" items="${lstParticipantes}">
+            <c:forEach var="c" items="${lstCliente}">
 
                 <tr>
-                    <td><c:out value="${p.participante.nombre}" /> </td>
-                    <td><c:out value="${p.raza.nombre}" /> </td>
-                    <td><c:out value="${p.participante.idRegistro}" /></td>
-                    <td><fmt:formatDate value="${p.participante.fechaRegistro}" pattern="dd/MM/yyyy HH:mm" /> </td>
-                    <td>
-                        <c:url var="urlEliminar" value="/ListarParticipanteController">
-                            <c:param name="idRaza" value="${param.idRaza}" />
-                        </c:url>
-                        <form action="${urlEliminar}" method="post">
-                            <input type="hidden" name="idParticipante" value="${p.participante.id}" />
-                            <input type="submit" value="Eliminar" />
-                        </form>
-                    </td>
+                    <td><c:out value="${c.rutCliente}" /> </td>
+                    <td><c:out value="${c.nombre}" /> </td>
                 </tr>
             </c:forEach>
         </table>
+    </center>
+    
+    <center><h3>Lista de Ventas Registradas</h3></center>
+    <center>
+        <table>
+        <tr>
+            <th>Codigo Venta</th>
+            <th>Fecha Venta</th>
+            <th>Cliente</th>
+            <th>Codigo Producto</th>
+            <th>Cantidad Producto</th>
+            <th>Valor Neto Total Venta</th>
+        </tr>
+        <c:forEach var="v" items="${lstVentas}" >
+            <tr>
+                <td><c:out value="${v.codVenta}" /></td>
+                <td><c:out value="${v.fecha}" /></td>
+                <td><c:out value="${v.rutCliente}" /></td>
+                <td><c:out value="${v.codProducto}" /></td>
+                <td><c:out value="${v.cantProducto}" /></td>
+                <td><c:out value="${v.valorNetoTotal}" /></td>
+            </tr>
+        </c:forEach>
+    </table>
+    </center>
     </body>
+        </form>
 </html>
