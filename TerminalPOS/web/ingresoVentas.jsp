@@ -30,9 +30,9 @@
                 <tr>Ingresa Datos Cliente</tr>
                 <tr>
                     <td>Rut:</td>
-                    <td><input type="text" name="rut_cli" value="<c:out value="${cliente.rutCliente}"/>"/></td>
+                    <td><input type="text" name="rut_cli" value="<c:out value="${cliente.rutCliente}"/>"/></br><c:out value="${mapMensaje['rut_cli']}" /></td>
                     <td>Nombre:</td>
-                    <td><input type="text" name="nom_cli" value="<c:out value="${cliente.nombre}"/>"/></td>
+                    <td><input type="text" name="nom_cli" value="<c:out value="${cliente.nombre}"/>"/></br><c:out value="${mapMensajes['nom_cli']}" /></td>
                 </tr>
             </tbody>
         </table>
@@ -51,9 +51,9 @@
                                             <c:out value="${p.nombre}"/>
                                         </option>
                                     </c:forEach>
-                        </select></td>
+                        </select></br><c:out value="${mapMensajes['lsProducto']}" /></td>
                     <td>Cantidad:</td>
-                    <td><input type="text" name="cant_prod" value="<c:out value="${venta.cantProducto}"/>"/></td>
+                    <td><input type="text" name="cant_prod" value="<c:out value="${venta.cantProducto}"/>"/></br><c:out value="${mapMensajes['cant_prod']}" /></td>
                     <td></td>
                 </tr>
                 <tr>
