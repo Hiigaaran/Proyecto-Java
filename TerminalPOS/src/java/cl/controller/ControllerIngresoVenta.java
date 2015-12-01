@@ -126,14 +126,17 @@ public class ControllerIngresoVenta extends HttpServlet {
 
                     //service.agregarCliente(cliente);
                     service.agregarVenta(venta, producto);
-
+                    request.setAttribute("strCodProducto", strCodProducto);
+                    request.setAttribute("venta", venta);
+                    request.getRequestDispatcher("/ControllerResumenVenta").forward(request, response);
                 } catch (ServicioException ex) {
                     mensaje = ex.getMessage();
                 }
+            }else
+            {
+              request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);   
             }
-             request.setAttribute("strCodProducto", strCodProducto);
-             request.setAttribute("venta", venta);
-            request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
+             
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

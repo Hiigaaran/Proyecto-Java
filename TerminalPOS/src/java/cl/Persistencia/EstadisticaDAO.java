@@ -9,6 +9,6 @@ package cl.Persistencia;
  *
  * @author Jordan
  */
-public class estadisticaDAO {
+public class EstadisticaDAO {
     
 }

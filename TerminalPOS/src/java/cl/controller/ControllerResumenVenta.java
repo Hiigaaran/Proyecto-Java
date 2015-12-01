@@ -55,6 +55,8 @@ public class ControllerResumenVenta extends HttpServlet {
         //seteo de atributos usados por Venta
         request.setAttribute("cod_venta", ven.getCodVenta());
         request.setAttribute("fecha", ven.getFecha());
+        request.setAttribute("cantidad_producto", ven.getCantProducto());
+        request.setAttribute("neto_total", ven.getValorNetoTotal());
              
              
              
