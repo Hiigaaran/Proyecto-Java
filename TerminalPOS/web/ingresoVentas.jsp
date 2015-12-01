@@ -55,13 +55,7 @@
                     <td>Cantidad:</td>
                     <td><input type="text" name="cant_prod" value="<c:out value="${venta.cantProducto}"/>"/></br><c:out value="${mapMensajes['cant_prod']}" /></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>Valor Unitario:</td>
-                    <td><input type="text" name="val_neto" value="<c:out value="${producto.valorNeto}"/>"></td>
-                    <td>Valor Total:</td>
-                    <td><input type="text" name="val_total" value="<c:out value="${venta.valorNetoTotal}"/>"/></td>  
-                </tr>  
+                </tr>                
                 <tr>
                     <td><center><input class="waves-effect waves-light btn" type="submit" alt="Ingresar Venta"/></center></td>
                 </tr>
