@@ -15,7 +15,7 @@
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <title>Terminal Punto de Ventas</title>
     </head>
-    <body class="teal">
+    <body class="lime lighten-1">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <%@include file="opciones.jsp" %>

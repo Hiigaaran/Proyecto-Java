@@ -27,7 +27,7 @@
             }
         </style>
     </head>
-    <body class="teal">
+    <body class="lime lighten-1">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <form action="<c:url value="/ControllerEstadisticasVentas" />" method="GET">
