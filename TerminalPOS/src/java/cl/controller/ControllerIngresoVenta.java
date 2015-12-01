@@ -131,7 +131,8 @@ public class ControllerIngresoVenta extends HttpServlet {
                     mensaje = ex.getMessage();
                 }
             }
-
+             request.setAttribute("strCodProducto", strCodProducto);
+             request.setAttribute("venta", venta);
             request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
 
         } catch (SQLException e) {
