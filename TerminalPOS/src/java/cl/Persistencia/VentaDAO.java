@@ -124,7 +124,7 @@ public class VentaDAO {
     }
     
     public void eliminar(int cod){
-        String sql = "delete from venta where rut_cliente= ?";
+        String sql = "delete from venta where cod_venta= ?";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
             stmt.setInt(1, cod);
             stmt.executeUpdate();
