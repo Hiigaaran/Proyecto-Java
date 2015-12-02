@@ -36,16 +36,26 @@
         
     <center><h3>Lista de Cliente Registrados</h3></center>
     <center>
-        <table>
+        <table class="centered highlight">
             <tr>
-                <th>Rut Cliente</th>
-                <th>Nombre Cliente</th>
+                <th><center>Rut Cliente</center></th>
+                <th><center>Nombre Cliente</center></th>
+                <th><center>Acción</center></th>
             </tr>
             <c:forEach var="c" items="${lstCliente}">
 
                 <tr>
-                    <td><c:out value="${c.rutCliente}" /> </td>
-                    <td><c:out value="${c.nombre}" /> </td>
+                    <td><c:out value="${c.rutCliente}" /></td>
+                    <td><c:out value="${c.nombre}" /></td>
+                    <td>
+                        <c:url var="urlEliminar" value="/ControllerEstadisticasVentas">
+                            <c:param name="codigoCliente" value="${param.rutCliente}" />
+                        </c:url>
+                        <form action="${urlEliminar}" method="post">
+                            <input type="hidden" name="codigoClienteDEL" value="${c.rutCliente}" />
+                            <input class="waves-effect waves-light btn" type="submit" value="Eliminar" />
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
@@ -53,14 +63,14 @@
     
     <center><h3>Lista de Ventas Registradas</h3></center>
     <center>
-        <table>
+        <table class="centered highlight">
         <tr>
-            <th>Codigo Venta</th>
-            <th>Fecha Venta</th>
-            <th>Cliente</th>
-            <th>Codigo Producto</th>
-            <th>Cantidad Producto</th>
-            <th>Valor Neto Total Venta</th>
+            <th><center>Codigo Venta</center></th>
+            <th><center>Fecha Venta</center></th>
+            <th><center>Cliente</center></th>
+            <th><center>Codigo Producto</center></th>
+            <th><center>Cantidad Producto</center></th>
+            <th><center>Valor Neto Total Venta</center></th>
         </tr>
         <c:forEach var="v" items="${lstVentas}" >
             <tr>
