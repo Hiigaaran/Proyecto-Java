@@ -44,6 +44,10 @@ public class TerminalPosService {
         
     }
     
+    public void eliminarCliente(int rut){
+        clienteDAO.eliminar(rut);
+    }
+    
     public void agregarProducto(Producto prod)throws ServicioException
     {
         productoDAO.agregar(prod);

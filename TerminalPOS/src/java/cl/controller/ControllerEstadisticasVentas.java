@@ -65,7 +65,16 @@ public class ControllerEstadisticasVentas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+        try (Connection cnx = ds.getConnection()){
+            TerminalPosService service = new TerminalPosService(cnx);
+            
+            int rut = Integer.parseInt(request.getParameter("codigoClienteDEL"));
+            if (rut != 0) {
+                service.eliminarCliente(rut);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

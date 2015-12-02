@@ -75,4 +75,13 @@ public class ClienteDAO {
         return lista;
     }
      
+    public void eliminar(int rut){
+        String sql="delete from cliente where rut_cliente=?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, rut);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al eliminar al cliente", ex);
+        }
+    }
 }
