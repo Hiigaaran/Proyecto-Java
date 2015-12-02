@@ -134,6 +134,10 @@ public class ControllerIngresoVenta extends HttpServlet {
                 }
             }else
             {
+              request.setAttribute("mapMensajes", mapMensajes);
+              request.setAttribute("lsProducto", service.buscarTodosLosProductos());
+              request.setAttribute("cliente", cliente);
+              request.setAttribute("venta", venta);
               request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);   
             }
              
