@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.util.List;
 import cl.Persistencia.*;
 import cl.dominio.Cliente;
+import cl.dominio.Estadistica;
 import cl.dominio.Producto;
 import cl.dominio.Venta;
 import cl.dto.ClienteProductoVentaDTO;
@@ -26,12 +27,14 @@ public class TerminalPosService {
     private ProductoDAO productoDAO;
     private VentaDAO ventaDAO;
     private ConsultaDAO consultaDAO;
+    private EstadisticaDAO  estadisticaDAO;
 
     public TerminalPosService(Connection cnx) {
         clienteDAO =new ClienteDAO(cnx);
         productoDAO=new ProductoDAO(cnx);
         ventaDAO= new VentaDAO(cnx);
         consultaDAO = new ConsultaDAO(cnx);
+        
     }
 
     public void agregarCliente(Cliente cli)throws ServicioException
@@ -98,4 +101,48 @@ public class TerminalPosService {
     public void eliminarVenta(int cod){
         ventaDAO.eliminar(cod);
     }
+    
+    public void crearEstadistica()
+    {
+       estadisticaDAO.create();
+    }
+    
+    public int buscarTotalDia()
+    {
+        return estadisticaDAO.obtenerDiario();
+    }
+    public int buscarTotalSemana()
+    {
+        return estadisticaDAO.obtenerSemanal();
+    }
+    public int buscarTotalMes()
+    {
+        return estadisticaDAO.obtenerMensual();
+    }
+    public int buscarTotalAnio()
+    {
+        return estadisticaDAO.obtenerAnual();
+    }
+    public double buscarPromedioDiario()
+    {
+        return estadisticaDAO.obtenerPromedioDiario();
+    }
+    public double buscarPromedioSemana()
+    {
+        return estadisticaDAO.obtenerPromedioSemanal();
+    }
+    public double buscarPromedioMensual()
+    {
+        return estadisticaDAO.obtenerPromedioMensual();
+    }
+    public double buscarPromedioAnual()
+    {
+        return estadisticaDAO.obtenerPromedioAnual();
+    }
+    public List<Estadistica> buscarTodasEstadisticas()
+    {
+        return  estadisticaDAO.buscarTodoEstadisticas();
+    }
+    
+    
 }

@@ -35,16 +35,18 @@ public class ControllerEstadistica extends HttpServlet {
             throws ServletException, IOException {
        
         try(Connection cnx =ds.getConnection()){
+            
             TerminalPosService service = new TerminalPosService(cnx);
             
-            Estadistica estadistica = new Estadistica();
-             
-            //toma de la informacion de la bd
-             request.setAttribute("fechaEstadistica", estadistica.getFecha_estadistica());
-             request.setAttribute("totalSemanal", estadistica.getTotal_semanal());
-             request.setAttribute("totalMensua",estadistica.getTotal_mensual());
-             request.setAttribute("totalAnual", estadistica.getTotal_anual());
-             
+           request.setAttribute("totaldia", service.buscarTotalDia());
+           request.setAttribute("totalsemana", service.buscarTotalSemana());
+           request.setAttribute("totalmes", service.buscarTotalMes());
+           request.setAttribute("totalanio", service.buscarTotalAnio());
+           request.setAttribute("promediodia", service.buscarPromedioDiario());
+           request.setAttribute("promediosemana", service.buscarPromedioSemana());
+           request.setAttribute("promediomes", service.buscarPromedioMensual());
+           request.setAttribute("promedioanio", service.buscarPromedioAnual());
+           request.setAttribute("lstEstadisticas", service.buscarTodasEstadisticas());
              
              
            request.getRequestDispatcher("/Estadistica.jsp").forward(request, response);
