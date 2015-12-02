@@ -30,7 +30,7 @@
                 <tr>Ingresa Datos Cliente</tr>
                 <tr>
                     <td>Rut:</td>
-                    <td><input type="text" name="rut_cli" value="<c:out value="${cliente.rutCliente}"/>"/></br><c:out value="${mapMensaje['rut_cli']}" /></td>
+                    <td><input type="text" name="rut_cli" value="<c:out value="${cliente.rutCliente}"/>"/></br><c:out value="${mapMensajes['rut_cliente']}" /></td>
                     <td>Nombre:</td>
                     <td><input type="text" name="nom_cli" value="<c:out value="${cliente.nombre}"/>"/></br><c:out value="${mapMensajes['nom_cli']}" /></td>
                 </tr>
