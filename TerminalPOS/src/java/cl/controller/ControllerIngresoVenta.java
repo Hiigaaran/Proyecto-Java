@@ -127,10 +127,11 @@ public class ControllerIngresoVenta extends HttpServlet {
                     //service.agregarCliente(cliente);
                     service.agregarVenta(venta, producto);
                     
+                  Producto prod = service.buscarProducto(Integer.parseInt(strCodProducto));
+                    request.setAttribute("Productolisto", prod);
+                    request.setAttribute("ventalista", venta);
                     
-                    request.setAttribute("strCodProducto", strCodProducto);
-                    request.setAttribute("venta", venta);
-                     response.sendRedirect("/ControllerResumenVenta");
+                       request.getRequestDispatcher("/resumenVenta.jsp").forward(request, response);
                     //request.getRequestDispatcher("/ControllerResumenVenta").forward(request, response);
                 } catch (ServicioException ex) {
                     mensaje = ex.getMessage();

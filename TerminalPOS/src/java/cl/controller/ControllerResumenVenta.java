@@ -31,7 +31,8 @@ public class ControllerResumenVenta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String strCodProducto =(String)request.getAttribute("strCodProducto");
+        
+        String strCodProducto =(String)request.getAttribute("CodProducto");
         
         try (Connection cnx = ds.getConnection()) {
             TerminalPosService service = new TerminalPosService(cnx);
@@ -49,7 +50,7 @@ public class ControllerResumenVenta extends HttpServlet {
              
         
        
-        Venta ven=(Venta) request.getAttribute("venta");
+        Venta ven=(Venta) request.getAttribute("ventalista");
         
         
         //seteo de atributos usados por Venta
