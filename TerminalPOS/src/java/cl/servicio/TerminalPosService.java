@@ -37,10 +37,11 @@ public class TerminalPosService {
     public void agregarCliente(Cliente cli)throws ServicioException
     {
         Cliente bd = clienteDAO.buscar(cli.getRutCliente());
-        if (bd!=null) {
-            throw new ServicioException("Ya existe Cliente  con el Rut indicado: " + cli.getRutCliente());
+        if (bd==null) {
+            //throw new ServicioException("Ya existe Cliente  con el Rut indicado: " + cli.getRutCliente());
+            clienteDAO.agregar(cli);
         }
-        clienteDAO.agregar(cli);
+        
     }
     
     public void agregarProducto(Producto prod)throws ServicioException
