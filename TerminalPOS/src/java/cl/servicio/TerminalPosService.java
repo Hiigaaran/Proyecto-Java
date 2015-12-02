@@ -94,4 +94,8 @@ public class TerminalPosService {
     {
         return ventaDAO.buscarUltima();
     }
+    
+    public void eliminarVenta(int cod){
+        ventaDAO.eliminar(cod);
+    }
 }

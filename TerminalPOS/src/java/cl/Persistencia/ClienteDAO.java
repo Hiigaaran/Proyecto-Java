@@ -76,12 +76,21 @@ public class ClienteDAO {
     }
      
     public void eliminar(int rut){
-        String sql="delete from cliente where rut_cliente=?";
-        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+        //Se eliminan preventivamente los registro de ventas del cliente para evitar problemas.
+            String sql = "delete from venta where rut_cliente= ?";
+            try (PreparedStatement stmt = cnx.prepareStatement(sql)){
             stmt.setInt(1, rut);
             stmt.executeUpdate();
-        } catch (SQLException ex) {
-            throw new RuntimeException("Error al eliminar al cliente", ex);
-        }
+            } catch (SQLException e) {
+                throw new RuntimeException("Error al eliminar las ventas del cliente");
+            }
+        
+            sql="delete from cliente where rut_cliente=?";
+            try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+                stmt.setInt(1, rut);
+                stmt.executeUpdate();
+            } catch (SQLException ex) {
+                throw new RuntimeException("Error al eliminar al cliente", ex);
+            }
     }
 }

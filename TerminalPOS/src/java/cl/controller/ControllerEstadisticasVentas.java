@@ -41,9 +41,9 @@ public class ControllerEstadisticasVentas extends HttpServlet {
            Producto producto = new Producto();
            Venta venta = new Venta();
            
-            request.setAttribute("venta", venta);
-            request.setAttribute("producto", producto);
-            request.setAttribute("cliente", cliente);
+            //request.setAttribute("venta", venta);
+            //request.setAttribute("producto", producto);
+            //request.setAttribute("cliente", cliente);
             request.setAttribute("lsProducto", service.buscarTodosLosProductos());
             request.setAttribute("lstCliente", service.buscarTodosCliente());
             request.setAttribute("lstVentas", service.buscarTodasVentas());
@@ -68,10 +68,29 @@ public class ControllerEstadisticasVentas extends HttpServlet {
         try (Connection cnx = ds.getConnection()){
             TerminalPosService service = new TerminalPosService(cnx);
             
-            int rut = Integer.parseInt(request.getParameter("codigoClienteDEL"));
-            if (rut != 0) {
-                service.eliminarCliente(rut);
+            
+            String rut = request.getParameter("codigoClienteDEL");
+            if (rut != null) {
+                int rutN = Integer.parseInt(rut);
+                service.eliminarCliente(rutN);
             }
+            
+            String cod = request.getParameter("codigoVentaDEL");
+            if (cod != null) {
+                int codN = Integer.parseInt(cod);
+                service.eliminarVenta(codN);
+            }
+        
+            //Luego se repite el doGet
+            //request.setAttribute("venta", venta);
+            //request.setAttribute("producto", producto);
+            //request.setAttribute("cliente", cliente);
+            request.setAttribute("lsProducto", service.buscarTodosLosProductos());
+            request.setAttribute("lstCliente", service.buscarTodosCliente());
+            request.setAttribute("lstVentas", service.buscarTodasVentas());
+           
+            
+            request.getRequestDispatcher("/estadisticasventas.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

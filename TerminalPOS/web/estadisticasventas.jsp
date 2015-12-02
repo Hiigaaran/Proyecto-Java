@@ -71,6 +71,7 @@
             <th><center>Codigo Producto</center></th>
             <th><center>Cantidad Producto</center></th>
             <th><center>Valor Neto Total Venta</center></th>
+            <th><center>Acción</center></th>
         </tr>
         <c:forEach var="v" items="${lstVentas}" >
             <tr>
@@ -80,6 +81,15 @@
                 <td><c:out value="${v.codProducto}" /></td>
                 <td><c:out value="${v.cantProducto}" /></td>
                 <td><c:out value="${v.valorNetoTotal}" /></td>
+                <td>
+                    <c:url var="urlEliminar2" value="/ControllerEstadisticasVentas">
+                            <c:param name="codigoVenta" value="${param.codVenta}" />
+                        </c:url>
+                        <form action="${urlEliminar2}" method="post">
+                            <input type="hidden" name="codigoVentaDEL" value="${v.codVenta}" />
+                            <input class="waves-effect waves-light btn" type="submit" value="Eliminar" />
+                        </form>
+                </td>
             </tr>
         </c:forEach>
     </table>

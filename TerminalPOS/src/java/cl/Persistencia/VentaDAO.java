@@ -123,7 +123,15 @@ public class VentaDAO {
         return ventas;
     }
     
-    
+    public void eliminar(int cod){
+        String sql = "delete from venta where rut_cliente= ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, cod);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar las ventas del cliente");
+        }
+    }
     
     
    
