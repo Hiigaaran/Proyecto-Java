@@ -37,7 +37,7 @@
                 <th>Fecha Estadistica</th>
                 
                     <c:forEach var="v" items="lstEstadisticas">     
-                    <td><c:out value="${v.fecha_estadisticas}"/></td> 
+                    <td><c:out value="${v.fecha_estadistica}"/></td> 
                 </c:forEach>
                 
             </table>

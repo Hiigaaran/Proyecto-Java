@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author Sergio
+ * @author ELver 
  */
 @WebServlet(name = "ControllerEstadistica", urlPatterns = {"/ControllerEstadistica"})
 public class ControllerEstadistica extends HttpServlet {
@@ -36,21 +36,21 @@ public class ControllerEstadistica extends HttpServlet {
        
         try(Connection cnx =ds.getConnection()){
             
-            TerminalPosService service = new TerminalPosService(cnx);
+           TerminalPosService service = new TerminalPosService(cnx);
             
-           request.setAttribute("totaldia", service.buscarTotalDia());
-           request.setAttribute("totalsemana", service.buscarTotalSemana());
-           request.setAttribute("totalmes", service.buscarTotalMes());
-           request.setAttribute("totalanio", service.buscarTotalAnio());
-           request.setAttribute("promediodia", service.buscarPromedioDiario());
-           request.setAttribute("promediosemana", service.buscarPromedioSemana());
-           request.setAttribute("promediomes", service.buscarPromedioMensual());
-           request.setAttribute("promedioanio", service.buscarPromedioAnual());
+         //  request.setAttribute("totaldia", service.buscarTotalDia());
+        //   request.setAttribute("totalsemana", service.buscarTotalSemana());
+          // request.setAttribute("totalmes", service.buscarTotalMes());
+          // request.setAttribute("totalanio", service.buscarTotalAnio());
+          // request.setAttribute("promediodia", service.buscarPromedioDiario());
+         //  request.setAttribute("promediosemana", service.buscarPromedioSemana());
+         //  request.setAttribute("promediomes", service.buscarPromedioMensual());
+         //  request.setAttribute("promedioanio", service.buscarPromedioAnual());
            request.setAttribute("lstEstadisticas", service.buscarTodasEstadisticas());
              
              
-           request.getRequestDispatcher("/Estadistica.jsp").forward(request, response);
-             
+          // request.getRequestDispatcher("/estadisticas.jsp").forward(request, response);
+          request.getRequestDispatcher("/estadisticas.jsp").forward(request, response);   
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

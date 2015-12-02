@@ -13,7 +13,7 @@
     |
     <a href="<c:url value="/ControllerEstadisticasVentas" />">Registro de Ventas</a>
     |
-    <a href="<c:out value="/ControllerEstadisticas"/>">Estadisticas</a>
+    <a href="<c:out value="/ControllerEstadistica" />">Estadisticas</a>
 
 </p>
 <hr />
