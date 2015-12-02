@@ -130,7 +130,8 @@ public class ControllerIngresoVenta extends HttpServlet {
                     
                     request.setAttribute("strCodProducto", strCodProducto);
                     request.setAttribute("venta", venta);
-                    request.getRequestDispatcher("/ControllerResumenVenta.java").forward(request, response);
+                     response.sendRedirect("/ControllerResumenVenta");
+                    //request.getRequestDispatcher("/ControllerResumenVenta").forward(request, response);
                 } catch (ServicioException ex) {
                     mensaje = ex.getMessage();
                 }
