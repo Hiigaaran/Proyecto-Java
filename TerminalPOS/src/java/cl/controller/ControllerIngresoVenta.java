@@ -128,8 +128,9 @@ public class ControllerIngresoVenta extends HttpServlet {
                     service.agregarVenta(venta, producto);
                     
                     Producto prod = service.buscarProducto(Integer.parseInt(strCodProducto));
+                    Venta ven= service.buscarUltimaVenta();
                     request.setAttribute("Productolisto", prod);
-                    request.setAttribute("ventalista", venta);
+                    request.setAttribute("ventalista", ven);
                     request.setAttribute("clientelisto", cliente);
                     
                        request.getRequestDispatcher("/resumenVenta.jsp").forward(request, response);

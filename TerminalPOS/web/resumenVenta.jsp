@@ -21,7 +21,7 @@
     <center><%@include file="opciones.jsp" %></center>
     <center>__________________________________________________________________________________________________</center>
     <center>
-        <h1>Resumen de Venta</h1>
+        <h1>Resumen de Venta <c:out value="${ventalista.codVenta}"/></h1>
         </br>
         <h2>Cliente: <c:out value="${clientelisto.nombre}" /></h2>
         </br>

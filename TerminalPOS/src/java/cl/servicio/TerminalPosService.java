@@ -86,4 +86,8 @@ public class TerminalPosService {
     {
         return ventaDAO.buscarVentas();
     }
+    public Venta buscarUltimaVenta()
+    {
+        return ventaDAO.buscarUltima();
+    }
 }

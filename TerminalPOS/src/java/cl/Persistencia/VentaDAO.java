@@ -63,6 +63,44 @@ public class VentaDAO {
         
     }
     
+    public Venta buscarUltima()
+    {
+        int max=0;
+        String sql = "select max(cod_venta) from venta";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)) {
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                     max=rs.getInt("max(cod_venta)");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al Buscar el maximo codigo de venta", ex);
+        }
+        
+        
+       Venta ven =new Venta();
+        String sql2 = "select * from venta where cod_venta  = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql2)) {
+            stmt.setInt(1, max);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                ven.setCodVenta(rs.getInt("cod_venta"));
+                ven.setCodProducto(rs.getInt("cod_producto"));
+                ven.setCantProducto(rs.getInt("cant_prod"));
+                ven.setFecha(rs.getTimestamp("fecha"));
+                ven.setRutCliente(rs.getInt("rut_cliente"));
+                ven.setValorNetoTotal(rs.getInt("valor_neto_total"));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al Buscar  la ultima venta", ex);
+        }
+        return ven;
+        
+       
+    }
+    
     public List<Venta> buscarVentas(){
         List<Venta> ventas = new ArrayList<>();
         String sql = "select * from venta order by cod_venta";
