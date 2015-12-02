@@ -32,11 +32,11 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <form action="<c:url value="/ControllerEstadisticasVentas" />" method="GET">
             <center><h1>Sitio de Estadisticas de POS</h1></center>
-            <%@include file="opciones.jsp" %>
+            <center><%@include file="opciones.jsp" %></center>
         
     <center><h3>Lista de Cliente Registrados</h3></center>
     <center>
-        <table class="centered highlight">
+        <table class="centered highlight container">
             <tr>
                 <th><center>Rut Cliente</center></th>
                 <th><center>Nombre Cliente</center></th>
@@ -63,7 +63,7 @@
     
     <center><h3>Lista de Ventas Registradas</h3></center>
     <center>
-        <table class="centered highlight">
+        <table class="centered highlight container">
         <tr>
             <th><center>Codigo Venta</center></th>
             <th><center>Fecha Venta</center></th>
