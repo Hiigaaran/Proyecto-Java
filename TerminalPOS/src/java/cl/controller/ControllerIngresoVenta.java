@@ -71,17 +71,17 @@ public class ControllerIngresoVenta extends HttpServlet {
                 rut = Integer.parseInt(request.getParameter("rut_cli"));
                 //Supongo que aqui podriamos colocar un metodo para validar Ruts.
                 if (rut <= 0) {
-                    mapMensajes.put("rut_cli", "Tiene que ingresar un Rut ");
+                    mapMensajes.put("rut_cliente", "Tiene que ingresar un Rut");
                 } else {
                     if (validarRut(request.getParameter("rut_cli"))) {
                         cliente.setRutCliente(rut);
                     } else {
-                        mapMensajes.put("rut_cli", "Tiene que ingresar un Rut Válido");
+                        mapMensajes.put("rut_cliente", "Tiene que ingresar un Rut Válido");
                     }
 
                 }
             } catch (NumberFormatException e) {
-                mapMensajes.put("rut_cli", "El Rut no es valido: " + request.getParameter("rut_cli"));
+                mapMensajes.put("rut_cliente", "El Rut no es valido: " + request.getParameter("rut_cli"));
             }
 
             String nombreCli = request.getParameter("nom_cli");
