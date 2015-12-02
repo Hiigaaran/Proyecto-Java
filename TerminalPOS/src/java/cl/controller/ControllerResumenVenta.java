@@ -60,7 +60,7 @@ public class ControllerResumenVenta extends HttpServlet {
              
              
              
-            request.getRequestDispatcher("/ingresoVentas.jsp").forward(request, response);
+            request.getRequestDispatcher("/resumenVenta.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
