@@ -10,8 +10,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Resumen Venta</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     </head>
-    <body>
-        
+    <body class="lime lighten-1">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    <center><%@include file="opciones.jsp" %></center>
+    <center>__________________________________________________________________________________________________</center>
+    <center>
+        <h1>Resumen de Venta</h1>
+        </br>
+        <h2>Cliente: <c:out value="${clientelisto.nombre}" /></h2>
+        </br>
+        <h3>Articulo: <c:out value="${productolisto.nombre}" /></h3>
+        </br>
+        <h2>Valor Unitario: $ <c:out value="${productolisto.valorNeto}" /> Valor Total: $ <c:out value="${ventalista.valorNetoTotal}" /></h2>
+    </center>
     </body>
 </html>
