@@ -119,13 +119,13 @@ public class EstadisticaDAO {
     {
         int totalDiario=0;
         //obtiene toal de ventas del año actual
-         String dia = "SELECT sum(valor_neto_total) FROM venta WHERE YEAR(fecha) = YEAR(NOW()) AND MONTH(fecha) = MONTH(NOW()) AND DAY(fecha) = DAY(NOW())";
+         String dia = "SELECT sum(valor_neto_total) total FROM venta WHERE YEAR(fecha) = YEAR(NOW()) AND MONTH(fecha) = MONTH(NOW()) AND DAY(fecha) = DAY(NOW())";
         try (PreparedStatement stmt = cnx.prepareStatement(dia)) {
             
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     
-                   totalDiario=rs.getInt("sum(valor_neto_total)");
+                   totalDiario=rs.getInt("total");
                 }
             }             
            
@@ -177,12 +177,12 @@ public class EstadisticaDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     
-                   promedioDiario=rs.getInt("sum(valor_neto_total)");
+                   promedioDiario=rs.getDouble("avg(valor_neto_total)");
                 }
             }             
            
         }catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener total del Dia", ex);
+            throw new RuntimeException("Error al promedio  del Dia", ex);
         }
         
         return promedioDiario;
@@ -199,12 +199,12 @@ public class EstadisticaDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     
-                   promedioAnual=rs.getInt("sum(valor_neto_total)");
+                   promedioAnual=rs.getDouble("avg(valor_neto_total)");
                 }
             }             
            
         }catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener total Anual", ex);
+            throw new RuntimeException("Error al obtener promedio Anual", ex);
         }
         return promedioAnual;
     }
@@ -221,12 +221,12 @@ public class EstadisticaDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     
-                   promedioMes=rs.getInt("sum(valor_neto_total)");
+                   promedioMes=rs.getDouble("avg(valor_neto_total)");
                 }
             }             
            
         }catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener total Mensual", ex);
+            throw new RuntimeException("Error al obtener promedio Mensual", ex);
         }
         return promedioMes;
     }
@@ -237,18 +237,18 @@ public class EstadisticaDAO {
         double promedioSemana=0;
         //obtiene total de ventas de la  semana actual     
         
-         String average = "SELECT sum(valor_neto_total) FROM venta WHERE WEEKOFYEAR(fecha) = WEEKOFYEAR(NOW())";
+         String average = "SELECT avg(valor_neto_total) FROM venta WHERE WEEKOFYEAR(fecha) = WEEKOFYEAR(NOW())";
         try (PreparedStatement stmt = cnx.prepareStatement(average)) {
             
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     
-                   promedioSemana=rs.getInt("sum(valor_neto_total)");
+                   promedioSemana=rs.getDouble("avg(valor_neto_total)");
                 }
             }             
            
         }catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener total semanal", ex);
+            throw new RuntimeException("Error al obtener promedio semanal", ex);
         }
         return promedioSemana;
     }

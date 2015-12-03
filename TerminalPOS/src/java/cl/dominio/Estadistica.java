@@ -5,13 +5,14 @@
  */
 package cl.dominio;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author Jordan
  */
-public class Estadistica {
+public class Estadistica implements Serializable{
     private int cod_estadistica;
     private Timestamp fecha_estadistica;
     private int total_semanal;
@@ -67,6 +68,28 @@ public class Estadistica {
 
     public void setTotal_anual(int total_anual) {
         this.total_anual = total_anual;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.cod_estadistica;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estadistica other = (Estadistica) obj;
+        if (this.cod_estadistica != other.cod_estadistica) {
+            return false;
+        }
+        return true;
     }
     
     

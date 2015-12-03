@@ -49,7 +49,7 @@ public class ControllerEstadistica extends HttpServlet {
            request.setAttribute("lstEstadisticas", service.buscarTodasEstadisticas());
              
              
-          // request.getRequestDispatcher("/estadisticas.jsp").forward(request, response);
+          
           request.getRequestDispatcher("/estadisticas.jsp").forward(request, response);   
         } catch (SQLException e) {
             throw new RuntimeException(e);
