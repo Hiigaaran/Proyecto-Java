@@ -141,7 +141,7 @@ public class EstadisticaDAO {
     public List<Estadistica> buscarTodoEstadisticas()
     {
        
-          List<Estadistica> lista = new ArrayList();
+          List<Estadistica> lista = new ArrayList<>();
             String sql = "select * from estadistica order by cod_estadistica";
           try (PreparedStatement stmt = cnx.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();) {

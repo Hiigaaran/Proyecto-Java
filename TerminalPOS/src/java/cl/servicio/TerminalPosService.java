@@ -34,7 +34,7 @@ public class TerminalPosService {
         productoDAO=new ProductoDAO(cnx);
         ventaDAO= new VentaDAO(cnx);
         consultaDAO = new ConsultaDAO(cnx);
-        
+        estadisticaDAO = new EstadisticaDAO(cnx);
     }
 
     public void agregarCliente(Cliente cli)throws ServicioException
