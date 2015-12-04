@@ -33,74 +33,36 @@
     <center><h3>Estadisticas Venta</h3></center>
     <center><%@include file="opciones.jsp" %></center>
     <center>
-          <table class="container centered">
-              <tr><th><center>Fecha Estadistica</center></th></tr>
-                
-                
-                <tr>
-                    <c:forEach var="v" items="${lstEstadisticas}">
-                    <tr>
-                        <td><c:out value="${v.fecha_estadistica}"/></td>
-                    </tr>
-                         </c:forEach>
-                </tr>
-                
-                
-            </table>
-            
-        <table class="container centered"> 
-                <br/>
-                <tr><th><center>Estadistica Semanal</center></th></tr>
-                
-                <tr>
-                    <c:forEach var="c" items="${lstEstadisticas}">
-                        <tr>
-                    <td><c:out value="${v.total_semanal}"/></td>
-                    </tr>
-                </c:forEach>
-                </tr>
-               
-            </table>
-
-        <table class="container centered">
-                <br/>
-                <tr><th><center>Estadistica Mensual</center></th></tr>
-               
-                <tr>
-                    <c:forEach var="n" items="${lstEstadisticas}">
-                    <tr>
-                    <td><c:out value="${n.total_mensual}"/></td>
-                    </tr>
-                </c:forEach>
-                </tr>
-                
-
-            </table>
-        <table class="container centered">
-                <br/>
-                <tr><th><center>Estadistica Anual</center></th></tr>
-                 
-                <tr>
-                    <c:forEach var="m" items="${lstEstadisticas}">
-                    <tr>
-                <td><c:out value="${m.total_anual}"/></td>
-                    </tr>
-                </c:forEach>
-                </tr>
-                
-            </table>            
-            <%---  
-              <c:forEach var="v" items="${lstEstaditicas}">
+        <h2><center>Resumen Acotado</center></h2>
+        <table class="centered highlight container">
+            <tr>
+                <th><center>Codigo Registro</center></th>
+                <th><center>Fecha Ejecutada</center></th>
+                <th><center>Total Semanal</center></th>
+                <th><center>Total Mensual</center></th>
+                <th><center>Total Anual</center></th>
+            </tr>
+            <c:forEach var="v" items="${lstEstadisticas}">
                   <tr>
-                      <td><c:out value="${v.cod_estadisticas}"/></td>
-                      <td><c:out value="${v.fecha_estadisticas}"/></td>
-                      <td><c:out value="${v.total_semanal}"/></td>
-                      <td><c:out value="${v.total_mensual}"/></td>
-                      <td><c:out value="${v.total_anual}"/></td>     
+                      <td><c:out value="${v.cod_estadistica}"/></td>
+                      <td><c:out value="${v.fecha_estadistica}"/></td>
+                      <td>$ <c:out value="${v.total_semanal}"/></td>
+                      <td>$ <c:out value="${v.total_mensual}"/></td>
+                      <td>$ <c:out value="${v.total_anual}"/></td>     
                   </tr>
               </c:forEach>
-            --%>
-        
+        </table>
+        </br>
+        <div>
+            <table class="container highlight centered">
+                <tr><td><h1>Ganancia Promedio del Dia : $ <c:out value="${promediodia}" /></h1></td></tr></table>
+                </br>
+            <table class="container highlight centered">
+                <tr><td><h1>Ganancia Promedio del Mes : $ <c:out value="${promediomes}" /></h1></td></tr></table>
+                </br>
+            <table class="container highlight centered">
+                <tr><td><h1>Ganancia Promedio del Año : $ <c:out value="${promedioanio}" /></h1></td></tr></table>
+        </div>
     </center>
 </body>
 </html>
