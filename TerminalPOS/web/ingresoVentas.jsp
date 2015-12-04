@@ -57,7 +57,7 @@
                     <td></td>
                 </tr>                
                 <tr>
-                    <td><center><input class="waves-effect waves-light btn" type="submit" alt="Ingresar Venta"/></center></td>
+                    <td><center><input class="waves-effect waves-light btn" type="submit" value="Ingresar Venta"/></center></td>
                 </tr>
            </tbody>
        </table> 

@@ -65,8 +65,19 @@ public class ControllerEstadistica extends HttpServlet {
             throws ServletException, IOException {
        
         
+         request.setCharacterEncoding("UTF-8");
+        try (Connection cnx = ds.getConnection()) {
+            TerminalPosService service = new TerminalPosService(cnx);
         
+            
+            service.crearEstadistica();
+            
+            
+            request.getRequestDispatcher("/estadisticas.jsp").forward(request, response); 
         
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         
         
     }

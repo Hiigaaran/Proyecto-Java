@@ -33,7 +33,11 @@
     <center><h3>Estadisticas Venta</h3></center>
     <center><%@include file="opciones.jsp" %></center>
     <center>
-        <h2><center>Resumen Acotado</center></h2>
+        <h2><center>Resumen Acotado</center></h2>   
+        <form action="<c:url value="/ControllerEstadistica"/>" method="post">
+            <input class="waves-effect waves-light btn" type="submit" value="Cerrar Dia y cargar registro"/> </br>
+        </form>
+        </br>
         <table class="centered highlight container">
             <tr>
                 <th><center>Codigo Registro</center></th>
