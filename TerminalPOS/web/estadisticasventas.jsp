@@ -59,6 +59,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <center><c:out value="${mensaje1}" /></center>
     </center>
     
     <center><h3>Lista de Ventas Registradas</h3></center>
@@ -93,6 +94,7 @@
             </tr>
         </c:forEach>
     </table>
+        <center><c:out value="${mensaje2}" /></center>
     </center>
     </body>
         </form>

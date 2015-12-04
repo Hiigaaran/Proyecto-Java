@@ -67,18 +67,22 @@ public class ControllerEstadisticasVentas extends HttpServlet {
             throws ServletException, IOException {
         try (Connection cnx = ds.getConnection()){
             TerminalPosService service = new TerminalPosService(cnx);
-            
+            String mensaje = "";
             
             String rut = request.getParameter("codigoClienteDEL");
             if (rut != null) {
                 int rutN = Integer.parseInt(rut);
                 service.eliminarCliente(rutN);
+                mensaje = "El cliente ha sido eliminado exitosamente!!";
+                request.setAttribute("mensaje1", mensaje);
             }
             
             String cod = request.getParameter("codigoVentaDEL");
             if (cod != null) {
                 int codN = Integer.parseInt(cod);
                 service.eliminarVenta(codN);
+                mensaje = "La venta ha sido eliminada exitosamente!!";
+                request.setAttribute("mensaje2", mensaje);
             }
         
             //Luego se repite el doGet

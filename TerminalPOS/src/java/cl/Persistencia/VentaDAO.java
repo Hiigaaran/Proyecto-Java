@@ -124,7 +124,42 @@ public class VentaDAO {
     }
     
     public void eliminar(int cod){
-        String sql = "delete from venta where cod_venta= ?";
+        int codigoProducto = 0;
+        int cantidadProducto = 0;
+        int stock = 0;
+        String sql = "select cod_producto, cant_prod from venta where cod_venta = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, cod);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                codigoProducto = rs.getInt("cod_producto");
+                cantidadProducto = rs.getInt("cant_prod");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al encontrar datos del producto en la venta");
+        }
+        
+        sql = "select stock from producto where cod_producto = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, codigoProducto);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                stock = rs.getInt("stock");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al consultar producto de la venta en eliminacion");
+        }
+        
+        sql = "update producto set stock = ? where cod_producto = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, stock + cantidadProducto);
+            stmt.setInt(2, codigoProducto);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al actualizar el stock del producto de la venta a eliminar");
+        }
+        
+        sql = "delete from venta where cod_venta= ?";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
             stmt.setInt(1, cod);
             stmt.executeUpdate();
