@@ -72,6 +72,15 @@ public class ControllerEstadistica extends HttpServlet {
             
             service.crearEstadistica();
             
+            request.setAttribute("totaldia", service.buscarTotalDia());
+           request.setAttribute("totalsemana", service.buscarTotalSemana());
+           request.setAttribute("totalmes", service.buscarTotalMes());
+           request.setAttribute("totalanio", service.buscarTotalAnio());
+           request.setAttribute("promediodia", service.buscarPromedioDiario());
+           request.setAttribute("promediosemana", service.buscarPromedioSemana());
+           request.setAttribute("promediomes", service.buscarPromedioMensual());
+           request.setAttribute("promedioanio", service.buscarPromedioAnual());
+           request.setAttribute("lstEstadisticas", service.buscarTodasEstadisticas());
             
             request.getRequestDispatcher("/estadisticas.jsp").forward(request, response); 
         
