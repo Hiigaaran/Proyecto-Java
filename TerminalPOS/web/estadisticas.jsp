@@ -30,7 +30,7 @@
     <body class="lime lighten-1">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
-    <center><h3>Estadisticas Venta</h3></center>
+    <center><h3>Resumen de Caja</h3></center>
     <center><%@include file="opciones.jsp" %></center>
     <center>
         <h2><center>Resumen Acotado</center></h2>   

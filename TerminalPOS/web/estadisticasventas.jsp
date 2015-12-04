@@ -30,9 +30,9 @@
     <body class="lime lighten-1">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
+        <center><%@include file="opciones.jsp" %></center>
         <form action="<c:url value="/ControllerEstadisticasVentas" />" method="GET">
             <center><h1>Sitio de Estadisticas de POS</h1></center>
-            <center><%@include file="opciones.jsp" %></center>
         
     <center><h3>Lista de Cliente Registrados</h3></center>
     <center>
